@@ -1,0 +1,80 @@
+#--------------------------------------------------
+# Version:
+# NOTE: UPDATE THIS TO UPDATE ASSEMBLY AND NUGET 
+# VERSIONS!!!!!!!!
+#--------------------------------------------------
+version: '1.0.{build}'
+
+#--------------------------------------------------
+# Branch whitelist
+#--------------------------------------------------
+branches:
+  # Whitelist
+  only:
+    - master
+
+#--------------------------------------------------
+# After cloning repository
+#--------------------------------------------------
+install:
+  - git submodule init
+  - git submodule update
+
+#--------------------------------------------------
+# Build configuration
+#--------------------------------------------------
+configuration: Release
+
+#--------------------------------------------------
+# Assembly version patching
+#-------------------------------------------------- 
+assembly_info:
+  patch: true
+  file: '**\GlobalAssemblyInfo.cs'
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
+
+#--------------------------------------------------
+# Build hooks - before
+#--------------------------------------------------
+before_build:
+  - nuget restore -verbosity detailed
+  
+#--------------------------------------------------
+# Build hooks - after
+#--------------------------------------------------
+after_build:
+   - nuget pack %APPVEYOR_PROJECT_NAME%\%APPVEYOR_PROJECT_NAME%.csproj -verbosity detailed
+ 
+#--------------------------------------------------
+# NuGet config
+#--------------------------------------------------
+nuget:
+  # disable publishing of .nupkg artifacts to
+  # account/project feeds for pull request builds
+  disable_publish_on_pr: true
+  
+#--------------------------------------------------
+# Artifact configuration
+#--------------------------------------------------
+artifacts:  
+  - path: '**\*.nupkg'
+    name: NuGet
+
+#--------------------------------------------------
+# Deploy NuGet
+#--------------------------------------------------
+deploy:
+  provider: NuGet
+  api_key:
+    secure: AhNvfOiNoCPXb1PnRG18sOfxSmsS+q4iNJ30PsuABsau99QGZ46C4nhSRSoUZehg
+  artifact: /.*\.nupkg/
+  
+#--------------------------------------------------
+# Notifications
+#--------------------------------------------------
+notifications:
+  - provider: Slack
+    incoming_webhook:
+      secure: Y4pw1Q3aqUk/4aVYHN5R3u5Zca5ijyVi6tRAVahXhlFXFCZTwpJLrEwHsRGoqQGIkUUpAOvlOpVRNoXBKJhfwkHybRotzfi7SbbB8Rb+67I= 
