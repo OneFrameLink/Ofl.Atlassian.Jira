@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using Ofl.Core;
 using System.Reflection;
+using Ofl.Reflection;
 
 namespace Ofl.Atlassian.Jira.V2
 {
@@ -22,8 +22,8 @@ namespace Ofl.Atlassian.Jira.V2
                     pi => pi.GetCustomAttribute<JsonPropertyAttribute>(true)?.PropertyName ??
                           // Otherwise, camel case the property.
                           pi.Name.ToCamelCase()
-                    ).ToDelimitedString(".")
-                ).ToDelimitedString(",");
+                    ).Join(".")
+                ).Join(",");
         }
     }
 }

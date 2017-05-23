@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.AspNetCore.WebUtilities;
-using Ofl.Core;
 
 namespace Ofl.Atlassian.Jira.V2
 {

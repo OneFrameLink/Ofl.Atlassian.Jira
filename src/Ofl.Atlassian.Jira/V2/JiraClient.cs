@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Ofl.Core.Net.Http;
+using Ofl.Net.Http;
+using Ofl.Net.Http.ApiClient.Json;
+using Ofl.Threading.Tasks;
 
 namespace Ofl.Atlassian.Jira.V2
 {
@@ -116,13 +118,13 @@ namespace Ofl.Atlassian.Jira.V2
             );
         }
 
-        protected override Task<string> FormatUrlAsync(string url, CancellationToken cancellationToken)
+        protected override ValueTask<string> FormatUrlAsync(string url, CancellationToken cancellationToken)
         {
             // validate parameters.
             if (string.IsNullOrWhiteSpace(url)) throw new ArgumentNullException(nameof(url));
 
             // Create the API url.
-            return Task.FromResult(_configuration.CreateApiUri(url));
+            return ValueTaskExtensions.FromResult(_configuration.CreateApiUri(url));
         }
 
         #region Overrides of ApiClient

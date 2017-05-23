@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Ofl.Core.Net.Http;
+using Ofl.Net.Http;
 
 namespace Ofl.Atlassian.Jira.V2
 {
@@ -13,10 +13,7 @@ namespace Ofl.Atlassian.Jira.V2
         internal BasicAuthenticationHttpMessageHandler(JiraClientConfiguration configuration)
         {
             // Validate parameters.
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-
-            // Assign values.
-            _configuration = configuration;
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
 
             // Set compression.
             this.SetCompression();
