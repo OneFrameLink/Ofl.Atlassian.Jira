@@ -11,6 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{23458000-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ofl.Atlassian.Jira.Tests", "test\Ofl.Atlassian.Jira.Tests\Ofl.Atlassian.Jira.Tests.csproj", "{68A7275C-2E1F-487D-B8F9-993F52A236FB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-level items", "solution-level items", "{B32B0473-6676-421D-8589-E2CE02C0C60D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		appveyor.yml = appveyor.yml
+		directory.build.props = directory.build.props
+		LICENSE = LICENSE
+		Ofl.Atlassian.Jira.sln.DotSettings = Ofl.Atlassian.Jira.sln.DotSettings
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,5 +43,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A131018A-7379-4CD3-BD6A-C5EC09355395} = {C3C5CC5D-7B9A-4CE4-9E42-702D49F250B3}
 		{68A7275C-2E1F-487D-B8F9-993F52A236FB} = {23458000-DD94-462F-8E1B-D0179CEFB030}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B4DE7DF-CF34-4696-A8FB-0261C09689B0}
 	EndGlobalSection
 EndGlobal

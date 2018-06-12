@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Client for interacting with Atlassian JIRA.</Description>
     <Authors>One Frame Link</Authors>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Ofl.Atlassian.Jira</AssemblyName>
     <PackageId>Ofl.Atlassian.Jira</PackageId>
     <PackageIconUrl>https://raw.githubusercontent.com/OneFrameLink/Ofl._Shared/master/OneFrameLink_225x225.png</PackageIconUrl>
@@ -16,15 +16,15 @@
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <PackageTags>atlassian-jira atlassian jira</PackageTags>
-    <Version>2.0.0</Version>
+    <Version>3.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="1.1.2" />
-    <PackageReference Include="Ofl.Atlassian.Jira.Abstractions" Version="1.0.2" />
-    <PackageReference Include="Ofl.Net.Http.ApiClient.Json" Version="1.0.2" />
-    <PackageReference Include="Ofl.Threading.Tasks" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.0" />
+    <PackageReference Include="Ofl.Atlassian.Jira.Abstractions" Version="2.0.3" />
+    <PackageReference Include="Ofl.Net.Http.ApiClient.Json" Version="2.0.4" />
+    <PackageReference Include="Ofl.Threading.Tasks" Version="2.0.4" />
   </ItemGroup>
 
   <ItemGroup>
