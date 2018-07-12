@@ -2,18 +2,19 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Ofl.Net.Http;
 
 namespace Ofl.Atlassian.Jira.V2
 {
-    internal class BasicAuthenticationHttpMessageHandler : HttpClientHandler
+    public class BasicAuthenticationHttpMessageHandler : HttpClientHandler
     {
         #region Constructor
 
-        internal BasicAuthenticationHttpMessageHandler(JiraClientConfiguration configuration)
+        public BasicAuthenticationHttpMessageHandler(IOptions<JiraClientConfiguration> jiraClientConfigurationOptions)
         {
             // Validate parameters.
-            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            _jiraClientConfigurationOptions = jiraClientConfigurationOptions ?? throw new ArgumentNullException(nameof(jiraClientConfigurationOptions));
 
             // Set compression.
             this.SetCompression();
@@ -23,7 +24,7 @@ namespace Ofl.Atlassian.Jira.V2
 
         #region Instance, read-only state.
 
-        private readonly JiraClientConfiguration _configuration;
+        private readonly IOptions<JiraClientConfiguration> _jiraClientConfigurationOptions;
 
         #endregion
 
@@ -36,8 +37,11 @@ namespace Ofl.Atlassian.Jira.V2
             // Validate parameters.
             if (request == null) throw new ArgumentNullException(nameof(request));
 
+            // Get the current config.
+            JiraClientConfiguration config = _jiraClientConfigurationOptions.Value;
+
             // Set the username and password on the request.
-            request.SetBasicHttpAuthentication(_configuration.Username, _configuration.Password);
+            request.SetBasicHttpAuthentication(config.Username, config.Password);
 
             // Send the request.
             return base.SendAsync(request, cancellationToken);

@@ -16,26 +16,18 @@ namespace Ofl.Atlassian.Jira.V2
         #region Constructor
 
         public JiraClient(
-            IHttpClientFactory httpClientFactory,
-            IOptions<JiraClientConfiguration> configuration,
-            ICredentialProvider credentialProvider) : base(httpClientFactory)
+            HttpClient httpClient,
+            IOptions<JiraClientConfiguration> jiraClientConfigurationOptions) : base(httpClient)
         {
             // Validate parameters.
-            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-            if (credentialProvider == null) throw new ArgumentNullException(nameof(credentialProvider));
-
-            // Assign values.
-            _configuration = configuration.Value;
-            _credentialProvider = credentialProvider;
+            _jiraClientConfigurationOptions = jiraClientConfigurationOptions ?? throw new ArgumentNullException(nameof(jiraClientConfigurationOptions));
         }
 
         #endregion
 
         #region Instance, read-only state.
 
-        private readonly JiraClientConfiguration _configuration;
-
-        private readonly ICredentialProvider _credentialProvider;
+        private readonly IOptions<JiraClientConfiguration> _jiraClientConfigurationOptions;
 
         #endregion
 
@@ -109,25 +101,14 @@ namespace Ofl.Atlassian.Jira.V2
 
         #region Overrides of JsonApiClient
 
-        protected override async Task<HttpClient> CreateHttpClientAsync(CancellationToken cancellationToken)
-        {
-            // Call the overload.
-            return await CreateHttpClientAsync(
-                await _credentialProvider.CreateHttpMessageHandler(cancellationToken).ConfigureAwait(false),
-                cancellationToken
-            );
-        }
-
         protected override ValueTask<string> FormatUrlAsync(string url, CancellationToken cancellationToken)
         {
             // validate parameters.
             if (string.IsNullOrWhiteSpace(url)) throw new ArgumentNullException(nameof(url));
 
             // Create the API url.
-            return ValueTaskExtensions.FromResult(_configuration.CreateApiUri(url));
+            return ValueTaskExtensions.FromResult(_jiraClientConfigurationOptions.Value.CreateApiUri(url));
         }
-
-        #region Overrides of ApiClient
 
         protected override async Task<HttpResponseMessage> ProcessHttpResponseMessageAsync(HttpResponseMessage httpResponseMessage,
             JsonSerializerSettings jsonSerializerSettings, CancellationToken cancellationToken)
@@ -146,8 +127,6 @@ namespace Ofl.Atlassian.Jira.V2
             // Throw an exception.
             throw new JiraException(errorCollection);
         }
-
-        #endregion
 
         #endregion
     }
