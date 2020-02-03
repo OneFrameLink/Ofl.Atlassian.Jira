@@ -9,11 +9,9 @@ namespace Ofl.Atlassian.Jira.V2
 
         public JiraException(ErrorCollection errorCollection)
         {
-            // Validate parameters.
-            if (errorCollection == null) throw new ArgumentNullException(nameof(errorCollection));
-
-            // Assign values.
-            ErrorCollection = errorCollection;
+            // Validate parameters
+            ErrorCollection = errorCollection
+                ?? throw new ArgumentNullException(nameof(errorCollection));
         }
 
         #endregion

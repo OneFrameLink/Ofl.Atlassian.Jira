@@ -14,14 +14,17 @@ namespace Ofl.Atlassian.Jira.V2
 
         #region Extensions.
 
-        internal static string CreateApiUri(this JiraClientConfiguration configuration, string path)
+        internal static string CreateApiUri(
+            this JiraClientConfiguration configuration, 
+            string path
+        )
         {
             // Validate parameters.
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
             if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
 
             // Construct the URL. Get the base first.
-            string url = configuration.BaseUrl.ToString();
+            string? url = configuration.BaseUrl?.ToString();
 
             // Combine.
             url = CombineUrls(url, ApiAbsolutePathBase);
@@ -31,7 +34,7 @@ namespace Ofl.Atlassian.Jira.V2
         }
 
         // TODO: Need to find a URL manipulation library, or have one of our own in Ofl.Core.
-        private static string CombineUrls(string url1, string url2)
+        private static string CombineUrls(string? url1, string? url2)
         {
             // Format parameters, trim the ends.
             url1 = url1?.TrimEnd('/') ?? "";

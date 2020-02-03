@@ -2,22 +2,30 @@
   <PropertyGroup>
     <Authors>One Frame Link</Authors>
     <Company>One Frame Link</Company>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/OneFrameLink/Ofl._Shared/master/LICENSE.md</PackageLicenseUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/OneFrameLink/Ofl._Shared/master/OneFrameLink_225x225.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright &#169; 2018 One Frame Link</Copyright>
+    <Copyright>Copyright &#169; 2020 One Frame Link</Copyright>
     <LangVersion>latest</LangVersion>
-
-    <!-- Sourcelink -->
+    
+    <!-- Licensing, as per: https://github.com/NuGet/Home/wiki/Packaging-License-within-the-nupkg#project-properties -->
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageIcon>icon.png</PackageIcon>
+    
+    <!-- Sourcelink, as per https://github.com/dotnet/sourcelink -->
     <!-- Declare that the Repository URL can be published to NuSpec -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-
-    <!-- Include PDB in the built .nupkg -->
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <!-- Build symbol package (.snupkg) to distribute the PDB containing Source Link -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <!-- For SourceLink  -->
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-62925-02" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  </ItemGroup>
+  
+  <!-- For package icon, as per https://docs.microsoft.com/en-us/nuget/reference/msbuild-targets#packageiconurl -->
+  <ItemGroup>
+    <None Include="..\..\_shared\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 </Project>

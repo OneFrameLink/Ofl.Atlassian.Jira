@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ofl.Atlassian.Jira.V2;
@@ -9,7 +7,8 @@ namespace Ofl.Atlassian.Jira
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddAtlassianJiraClient(this IServiceCollection serviceCollection,
+        public static IServiceCollection AddAtlassianJiraClient(
+            this IServiceCollection serviceCollection,
             IConfiguration jiraClientConfigurationOptions)
         {
             // Validate parameters.

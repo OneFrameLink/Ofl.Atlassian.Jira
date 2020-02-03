@@ -4,8 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Ofl.Net.Http;
 using Ofl.Net.Http.ApiClient.Json;
 using Ofl.Threading.Tasks;
 
@@ -17,10 +15,12 @@ namespace Ofl.Atlassian.Jira.V2
 
         public JiraClient(
             HttpClient httpClient,
-            IOptions<JiraClientConfiguration> jiraClientConfigurationOptions) : base(httpClient)
+            IOptions<JiraClientConfiguration> jiraClientConfigurationOptions
+        ) : base(httpClient)
         {
             // Validate parameters.
-            _jiraClientConfigurationOptions = jiraClientConfigurationOptions ?? throw new ArgumentNullException(nameof(jiraClientConfigurationOptions));
+            _jiraClientConfigurationOptions = jiraClientConfigurationOptions
+                ?? throw new ArgumentNullException(nameof(jiraClientConfigurationOptions));
         }
 
         #endregion
@@ -33,7 +33,10 @@ namespace Ofl.Atlassian.Jira.V2
 
         #region Implementation of IJiraClient
 
-        public Task<GetWatchersResponse> GetWatchersAsync(GetWatchersRequest request, CancellationToken cancellationToken)
+        public Task<GetWatchersResponse> GetWatchersAsync(
+            GetWatchersRequest request, 
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
             if (request == null) throw new ArgumentNullException(nameof(request));
@@ -45,7 +48,10 @@ namespace Ofl.Atlassian.Jira.V2
             return GetAsync<GetWatchersResponse>(url, cancellationToken);
         }
 
-        public Task RemoveWatcherAsync(RemoveWatcherRequest request, CancellationToken cancellationToken)
+        public Task RemoveWatcherAsync(
+            RemoveWatcherRequest request, 
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
             if (request == null) throw new ArgumentNullException(nameof(request));
@@ -61,7 +67,9 @@ namespace Ofl.Atlassian.Jira.V2
         }
 
         public Task<CreateOrUpdateRemoteIssueLinkResponse> CreateOrUpdateRemoteIssueLinkAsync(
-            CreateOrUpdateRemoteIssueLinkRequest request, CancellationToken cancellationToken)
+            CreateOrUpdateRemoteIssueLinkRequest request, 
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
             if (request == null) throw new ArgumentNullException(nameof(request));
@@ -70,11 +78,13 @@ namespace Ofl.Atlassian.Jira.V2
             string url = $"/issue/{ request.IssueIdOrKey }/remotelink";
 
             // Post.
-            return PostAsync<RemoteIssueLink, CreateOrUpdateRemoteIssueLinkResponse>(url, request.RemoteIssueLink,
-                cancellationToken);
+            return PostAsync<RemoteIssueLink, CreateOrUpdateRemoteIssueLinkResponse>(
+                url, request.RemoteIssueLink, cancellationToken);
         }
 
-        public Task<GetIssueLinkTypesResponse> GetIssueLinkTypesAsync(CancellationToken cancellationToken)
+        public Task<GetIssueLinkTypesResponse> GetIssueLinkTypesAsync(
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
 
@@ -85,7 +95,10 @@ namespace Ofl.Atlassian.Jira.V2
             return GetAsync<GetIssueLinkTypesResponse>(url, cancellationToken);
         }
 
-        public Task LinkIssuesAsync(LinkIssuesRequest request, CancellationToken cancellationToken)
+        public Task LinkIssuesAsync(
+            LinkIssuesRequest request, 
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
             if (request == null) throw new ArgumentNullException(nameof(request));
@@ -101,7 +114,10 @@ namespace Ofl.Atlassian.Jira.V2
 
         #region Overrides of JsonApiClient
 
-        protected override ValueTask<string> FormatUrlAsync(string url, CancellationToken cancellationToken)
+        protected override ValueTask<string> FormatUrlAsync(
+            string url, 
+            CancellationToken cancellationToken
+        )
         {
             // validate parameters.
             if (string.IsNullOrWhiteSpace(url)) throw new ArgumentNullException(nameof(url));
@@ -110,19 +126,22 @@ namespace Ofl.Atlassian.Jira.V2
             return ValueTaskExtensions.FromResult(_jiraClientConfigurationOptions.Value.CreateApiUri(url));
         }
 
-        protected override async Task<HttpResponseMessage> ProcessHttpResponseMessageAsync(HttpResponseMessage httpResponseMessage,
-            JsonSerializerSettings jsonSerializerSettings, CancellationToken cancellationToken)
+        protected override Task<HttpResponseMessage> ProcessHttpResponseMessageAsync(
+            HttpResponseMessage httpResponseMessage, 
+            CancellationToken cancellationToken
+        )
         {
             // Validate parameters.
             if (httpResponseMessage == null) throw new ArgumentNullException(nameof(httpResponseMessage));
-            if (jsonSerializerSettings == null) throw new ArgumentNullException(nameof(jsonSerializerSettings));
+            if (jsonSerializerOptions == null) throw new ArgumentNullException(nameof(jsonSerializerOptions));
 
             // If the response code is valid, just return the response message.
             if (httpResponseMessage.IsSuccessStatusCode) return httpResponseMessage;
 
             // Deserailize the response into errors.
-            ErrorCollection errorCollection = await httpResponseMessage.ToObjectAsync<ErrorCollection>(
-                jsonSerializerSettings, cancellationToken).ConfigureAwait(false);
+            ErrorCollection errorCollection = await httpResponseMessage
+                .ToObjectAsync<ErrorCollection>()
+                .ConfigureAwait(false);
 
             // Throw an exception.
             throw new JiraException(errorCollection);

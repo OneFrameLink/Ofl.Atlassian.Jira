@@ -4,12 +4,15 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.Reflection;
 using Ofl.Reflection;
+using System.Text.Json;
 
 namespace Ofl.Atlassian.Jira.V2
 {
     public static class PropertyPathExtensions
     {
-        public static string ToParameterValue(this IEnumerable<PropertyPath> propertyPaths)
+        public static string ToParameterValue(
+            this IEnumerable<PropertyPath> propertyPaths
+        )
         {
             // Validate parameters.
             if (propertyPaths == null) throw new ArgumentNullException(nameof(propertyPaths));
@@ -19,9 +22,10 @@ namespace Ofl.Atlassian.Jira.V2
                 // Get the components of the path.
                 e => e.Path.Select(
                     // If there's a JsonProperty, use the name.
-                    pi => pi.GetCustomAttribute<JsonPropertyAttribute>(true)?.PropertyName ??
-                          // Otherwise, camel case the property.
-                          pi.Name.ToCamelCase()
+                    pi => pi.GetCustomAttribute<JsonPropertyAttribute>(true)
+                        ?.PropertyName
+                        // Otherwise, camel case the property.
+                        ?? JsonNamingPolicy.CamelCase.ConvertName(pi.Name)
                     ).Join(".")
                 ).Join(",");
         }
