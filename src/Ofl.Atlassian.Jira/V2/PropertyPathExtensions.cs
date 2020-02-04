@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
 using System.Reflection;
 using Ofl.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Ofl.Atlassian.Jira.V2
 {
@@ -21,9 +21,9 @@ namespace Ofl.Atlassian.Jira.V2
             return propertyPaths.Select(
                 // Get the components of the path.
                 e => e.Path.Select(
-                    // If there's a JsonProperty, use the name.
-                    pi => pi.GetCustomAttribute<JsonPropertyAttribute>(true)
-                        ?.PropertyName
+                    // If there's a JsonPropertyNameAttribute, use the name.
+                    pi => pi.GetCustomAttribute<JsonPropertyNameAttribute>(true)
+                        ?.Name
                         // Otherwise, camel case the property.
                         ?? JsonNamingPolicy.CamelCase.ConvertName(pi.Name)
                     ).Join(".")

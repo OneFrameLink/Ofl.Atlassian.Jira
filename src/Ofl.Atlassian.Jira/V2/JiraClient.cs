@@ -126,21 +126,20 @@ namespace Ofl.Atlassian.Jira.V2
             return ValueTaskExtensions.FromResult(_jiraClientConfigurationOptions.Value.CreateApiUri(url));
         }
 
-        protected override Task<HttpResponseMessage> ProcessHttpResponseMessageAsync(
+        protected override async Task<HttpResponseMessage> ProcessHttpResponseMessageAsync(
             HttpResponseMessage httpResponseMessage, 
             CancellationToken cancellationToken
         )
         {
             // Validate parameters.
             if (httpResponseMessage == null) throw new ArgumentNullException(nameof(httpResponseMessage));
-            if (jsonSerializerOptions == null) throw new ArgumentNullException(nameof(jsonSerializerOptions));
 
             // If the response code is valid, just return the response message.
             if (httpResponseMessage.IsSuccessStatusCode) return httpResponseMessage;
 
             // Deserailize the response into errors.
             ErrorCollection errorCollection = await httpResponseMessage
-                .ToObjectAsync<ErrorCollection>()
+                .ToObjectAsync<ErrorCollection>(cancellationToken)
                 .ConfigureAwait(false);
 
             // Throw an exception.

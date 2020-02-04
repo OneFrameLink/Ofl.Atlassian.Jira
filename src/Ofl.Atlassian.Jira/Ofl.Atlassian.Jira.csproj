@@ -24,7 +24,7 @@
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.1" />
-    <PackageReference Include="Ofl.Atlassian.Jira.Abstractions" Version="2.0.4" />
+    <PackageReference Include="Ofl.Atlassian.Jira.Abstractions" Version="3.0.6" />
     <PackageReference Include="Ofl.Net.Http.ApiClient.Json" Version="3.0.9" />
     <PackageReference Include="System.Text.Json" Version="4.7.0" />
   </ItemGroup>
