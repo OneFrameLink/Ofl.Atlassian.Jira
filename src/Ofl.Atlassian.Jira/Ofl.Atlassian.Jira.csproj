@@ -2,19 +2,11 @@
 
   <PropertyGroup>
     <Description>Client for interacting with Atlassian JIRA.</Description>
-    <Authors>One Frame Link</Authors>
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Ofl.Atlassian.Jira</AssemblyName>
     <PackageId>Ofl.Atlassian.Jira</PackageId>
-    <PackageIconUrl>https://raw.githubusercontent.com/OneFrameLink/Ofl._Shared/master/OneFrameLink_225x225.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/OneFrameLink/Ofl.Atlassian.Jira</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/OneFrameLink/Ofl._Shared/master/LICENSE.md</PackageLicenseUrl>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/OneFrameLink/Ofl.Atlassian.Jira.git</RepositoryUrl>
-    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <PackageTags>atlassian-jira atlassian jira</PackageTags>
     <Version>4.0.0</Version>
     <Nullable>enable</Nullable>
