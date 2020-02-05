@@ -10,7 +10,8 @@ environment:
   GITHUB_PERSONAL_ACCESS_TOKEN:
     secure: PNVFwcCuNr+X7SffsiwiVsa/JzVyZqwNJUbeve+Or/EjOwZxbd1CUC0K/5az9jsT    
   GIT_CONFIG_USER_EMAIL:
-    secure: yAZjzbVhtfeKof5pGJ/N65IjSffBIJoX5MZIpqbtHkc=
+    secure: YxdzY5pP0q50/JjxFeHGjmnmCzCIqqY4nCJ77iyZK5yvqKvIbwbaRYiOLeuesoyxi5Yy3iAYMnTTmLzeOLRNpA==
+
 #--------------------------------------------------
 # Note that the following is custom to this project and
 # needs to be replicated if this file is copy and pasted
