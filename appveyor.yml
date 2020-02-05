@@ -10,7 +10,7 @@ environment:
   GITHUB_PERSONAL_ACCESS_TOKEN:
     secure: PNVFwcCuNr+X7SffsiwiVsa/JzVyZqwNJUbeve+Or/EjOwZxbd1CUC0K/5az9jsT    
   GIT_CONFIG_USER_EMAIL:
-    secure: YxdzY5pP0q50/JjxFeHGjmnmCzCIqqY4nCJ77iyZK5yvqKvIbwbaRYiOLeuesoyxi5Yy3iAYMnTTmLzeOLRNpA==
+    secure: yAZjzbVhtfeKof5pGJ/N65IjSffBIJoX5MZIpqbtHkc=
 
 #--------------------------------------------------
 # Note that the following is custom to this project and
@@ -20,7 +20,7 @@ environment:
   JIRA__USERNAME:
     secure: yAZjzbVhtfeKof5pGJ/N65IjSffBIJoX5MZIpqbtHkc=
   JIRA_PASSWORD:
-    secure: OYoCRIsCmrzKwZjJ3cqybeeoloPMo/fIlUpLMsjFB+M=
+    secure: YxdzY5pP0q50/JjxFeHGjmnmCzCIqqY4nCJ77iyZK5yvqKvIbwbaRYiOLeuesoyxi5Yy3iAYMnTTmLzeOLRNpA==
 
 #--------------------------------------------------
 # Branch whitelist
