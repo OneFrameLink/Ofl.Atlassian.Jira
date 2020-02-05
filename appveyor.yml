@@ -19,7 +19,7 @@ environment:
 #--------------------------------------------------
   JIRA__USERNAME:
     secure: yAZjzbVhtfeKof5pGJ/N65IjSffBIJoX5MZIpqbtHkc=
-  JIRA_PASSWORD:
+  JIRA__PASSWORD:
     secure: Bv6zrdvasdW+oAlUo5aJXAKfY7l0dW8OnFzPJ4cZpoo=
 
 #--------------------------------------------------
