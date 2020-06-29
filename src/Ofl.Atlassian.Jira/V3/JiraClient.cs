@@ -60,7 +60,7 @@ namespace Ofl.Atlassian.Jira.V3
             string url = $"/issue/{ request.IssueIdOrKey }/watchers";
 
             // Add the username.
-            url = QueryHelpers.AddQueryString(url, "username", request.Username);
+            url = QueryHelpers.AddQueryString(url, "accountId", request.AccountId);
 
             // Delete.
             return DeleteAsync(url, cancellationToken);
