@@ -20,7 +20,7 @@ environment:
   JIRA__USERNAME:
     secure: yAZjzbVhtfeKof5pGJ/N65IjSffBIJoX5MZIpqbtHkc=
   JIRA__PASSWORD:
-    secure: YsU5kvBRCdythMk0XSBO2132NMM/FjvIhnvfcaeHl1QYPpF40SMs+h/6onn5q5RlTmo=
+    secure: NMM/FjvIhnvfcaeHl1QYPpF40SMs+h/6onn5q5RlTmo=
     
 #--------------------------------------------------
 # Branch whitelist
