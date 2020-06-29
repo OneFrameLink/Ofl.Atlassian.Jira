@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace Ofl.Atlassian.Jira.V2
+namespace Ofl.Atlassian.Jira.V3
 {
     public class JiraException : HttpRequestException
     {

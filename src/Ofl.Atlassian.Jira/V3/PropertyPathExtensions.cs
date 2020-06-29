@@ -6,7 +6,7 @@ using Ofl.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Ofl.Atlassian.Jira.V2
+namespace Ofl.Atlassian.Jira.V3
 {
     public static class PropertyPathExtensions
     {

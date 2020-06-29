@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ofl.Atlassian.Jira", "src\Ofl.Atlassian.Jira\Ofl.Atlassian.Jira.csproj", "{A131018A-7379-4CD3-BD6A-C5EC09355395}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C3C5CC5D-7B9A-4CE4-9E42-702D49F250B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{23458000-DD94-462F-8E1B-D0179CEFB030}"
+	ProjectSection(SolutionItems) = preProject
+		test\.gitignore = test\.gitignore
+		test\directory.build.props = test\directory.build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ofl.Atlassian.Jira.Tests", "test\Ofl.Atlassian.Jira.Tests\Ofl.Atlassian.Jira.Tests.csproj", "{68A7275C-2E1F-487D-B8F9-993F52A236FB}"
 EndProject
@@ -21,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-level items", "sol
 		Ofl.Atlassian.Jira.sln.DotSettings = Ofl.Atlassian.Jira.sln.DotSettings
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ofl.Atlassian.Jira.Abstractions", "src\Ofl.Atlassian.Jira.Abstractions\Ofl.Atlassian.Jira.Abstractions.csproj", "{734FF820-1F1C-4BCE-BB29-FEF091C546F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ofl.Atlassian.Jira.Abstractions.Tests", "test\Ofl.Atlassian.Jira.Abstractions.Tests\Ofl.Atlassian.Jira.Abstractions.Tests.csproj", "{4599C7F2-09C5-4366-B74D-464354E187C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +44,14 @@ Global
 		{68A7275C-2E1F-487D-B8F9-993F52A236FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68A7275C-2E1F-487D-B8F9-993F52A236FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68A7275C-2E1F-487D-B8F9-993F52A236FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{734FF820-1F1C-4BCE-BB29-FEF091C546F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{734FF820-1F1C-4BCE-BB29-FEF091C546F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{734FF820-1F1C-4BCE-BB29-FEF091C546F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{734FF820-1F1C-4BCE-BB29-FEF091C546F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4599C7F2-09C5-4366-B74D-464354E187C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4599C7F2-09C5-4366-B74D-464354E187C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4599C7F2-09C5-4366-B74D-464354E187C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4599C7F2-09C5-4366-B74D-464354E187C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +59,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A131018A-7379-4CD3-BD6A-C5EC09355395} = {C3C5CC5D-7B9A-4CE4-9E42-702D49F250B3}
 		{68A7275C-2E1F-487D-B8F9-993F52A236FB} = {23458000-DD94-462F-8E1B-D0179CEFB030}
+		{734FF820-1F1C-4BCE-BB29-FEF091C546F1} = {C3C5CC5D-7B9A-4CE4-9E42-702D49F250B3}
+		{4599C7F2-09C5-4366-B74D-464354E187C5} = {23458000-DD94-462F-8E1B-D0179CEFB030}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4B4DE7DF-CF34-4696-A8FB-0261C09689B0}

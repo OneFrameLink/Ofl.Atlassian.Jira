@@ -8,16 +8,18 @@
     <PackageProjectUrl>https://github.com/OneFrameLink/Ofl.Atlassian.Jira</PackageProjectUrl>
     <RepositoryUrl>https://github.com/OneFrameLink/Ofl.Atlassian.Jira.git</RepositoryUrl>
     <PackageTags>atlassian-jira atlassian jira</PackageTags>
-    <Version>4.0.0</Version>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.5" />
     <PackageReference Include="Ofl.Atlassian.Jira.Abstractions" Version="3.0.6" />
-    <PackageReference Include="Ofl.Net.Http.ApiClient.Json" Version="3.0.9" />
-    <PackageReference Include="System.Text.Json" Version="4.7.0" />
+    <PackageReference Include="Ofl.Net.Http.ApiClient.Json" Version="3.1.14" />
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ofl.Atlassian.Jira.Abstractions\Ofl.Atlassian.Jira.Abstractions.csproj" />
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 using Ofl.Net.Http.ApiClient.Json;
 using Ofl.Threading.Tasks;
 
-namespace Ofl.Atlassian.Jira.V2
+namespace Ofl.Atlassian.Jira.V3
 {
     public class JiraClient : JsonApiClient, IJiraClient
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Ofl.Atlassian.Jira.V2
+namespace Ofl.Atlassian.Jira.V3
 {
     public class ErrorCollection
     {

@@ -1,10 +1,10 @@
-﻿using Ofl.Atlassian.Jira.V2;
+﻿using Ofl.Atlassian.Jira.V3;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Ofl.Atlassian.Jira.Tests.V2
+namespace Ofl.Atlassian.Jira.Tests.V3
 {
     public class JiraClientTests : IClassFixture<JiraClientTestsFixture>
     {

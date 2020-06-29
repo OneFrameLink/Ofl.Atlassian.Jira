@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Ofl.Atlassian.Jira.V2
+namespace Ofl.Atlassian.Jira.V3
 {
     public static class JiraClientExtensions
     {
         #region Read-ony state.
 
-        private const string Version = "2";
+        private const string Version = "3";
 
         private static readonly string ApiAbsolutePathBase = $"/rest/api/{ Version }/";
 

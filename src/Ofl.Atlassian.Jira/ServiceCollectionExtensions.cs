@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Ofl.Atlassian.Jira.V2;
+using Ofl.Atlassian.Jira.V3;
 
 namespace Ofl.Atlassian.Jira
 {

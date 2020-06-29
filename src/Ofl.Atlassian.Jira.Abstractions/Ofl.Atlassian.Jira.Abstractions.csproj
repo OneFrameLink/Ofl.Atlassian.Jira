@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Description>Abstractions used by the Ofl.Atlassian.Jira project.</Description>
+    <AssemblyName>Ofl.Atlassian.Jira.Abstractions</AssemblyName>
+    <PackageId>Ofl.Atlassian.Jira.Abstractions</PackageId>
+    <PackageProjectUrl>https://github.com/OneFrameLink/Ofl.Atlassian.Jira.Abstractions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OneFrameLink/Ofl.Atlassian.Jira.Abstractions.git</RepositoryUrl>
+    <RootNamespace>Ofl.Atlassian.Jira</RootNamespace>
+    <PackageTags>atlassian-jira jira atlassian</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Ofl.Primitives" Version="3.1.9" />
+    <PackageReference Include="Ofl.Reflection" Version="3.0.12" />
+    <PackageReference Include="System.Text.Json" Version="4.7.0" />
+  </ItemGroup>
+</Project>

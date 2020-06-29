@@ -20,8 +20,8 @@ environment:
   JIRA__USERNAME:
     secure: yAZjzbVhtfeKof5pGJ/N65IjSffBIJoX5MZIpqbtHkc=
   JIRA__PASSWORD:
-    secure: Bv6zrdvasdW+oAlUo5aJXAKfY7l0dW8OnFzPJ4cZpoo=
-
+    secure: YsU5kvBRCdythMk0XSBO2132NMM/FjvIhnvfcaeHl1QYPpF40SMs+h/6onn5q5RlTmo=
+    
 #--------------------------------------------------
 # Branch whitelist
 #--------------------------------------------------
@@ -58,8 +58,8 @@ build:
 # Build hooks - before
 #--------------------------------------------------
 before_build:
-# Patch version in csproj
-  - ps: $temp_path = (Get-Item src\$env:APPVEYOR_PROJECT_NAME\$env:APPVEYOR_PROJECT_NAME.csproj).FullName
+# Patch version in directory.build.props
+  - ps: $temp_path = (Get-Item directory.build.props).FullName
   - ps: $temp_csproj = [xml](Get-Content $temp_path)
   - ps: $temp_csproj.Project.PropertyGroup.Version = $temp_csproj.Project.PropertyGroup.Version -replace '\.[0-9]+$', ".$env:APPVEYOR_BUILD_NUMBER"
   - ps: $temp_csproj.Save($temp_path)
@@ -102,7 +102,7 @@ nuget:
 deploy:
   provider: NuGet
   api_key:
-    secure: NkczEiXqPCbJkogq7nWCt00Tno/puiOW7LrjwDyctSP7UQAsV4IkB91iH0IUCYyb
+    secure: WuVzz7rQXKtG8gCcxuBARSPLoFyAed/9ymDhqOPwCSbigHBDRCHPmVv7LKHf8Q5B
   skip_symbols: false
   
 #--------------------------------------------------
