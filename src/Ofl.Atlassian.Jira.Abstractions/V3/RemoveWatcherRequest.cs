@@ -8,16 +8,16 @@ namespace Ofl.Atlassian.Jira.V3
 
         public RemoveWatcherRequest(
             string issueIdOrKey,
-            string username
+            string accountId
         )
         {
             // Validate parameters.
             IssueIdOrKey = string.IsNullOrWhiteSpace(issueIdOrKey)
                 ? throw new ArgumentNullException(nameof(issueIdOrKey))
                 : issueIdOrKey;
-            Username = string.IsNullOrWhiteSpace(username)
-                ? throw new ArgumentNullException(nameof(username))
-                : username;
+            AccountId = string.IsNullOrWhiteSpace(accountId)
+                ? throw new ArgumentNullException(nameof(accountId))
+                : accountId;
         }
 
         #endregion
@@ -26,7 +26,7 @@ namespace Ofl.Atlassian.Jira.V3
 
         public string IssueIdOrKey { get; }
 
-        public string Username { get; }
+        public string AccountId { get; }
 
         #endregion
     }
